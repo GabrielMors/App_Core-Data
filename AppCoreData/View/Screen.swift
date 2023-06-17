@@ -25,6 +25,7 @@ class Screen: UIView {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.keyboardType = .default
+        textField.backgroundColor = .white
         textField.layer.cornerRadius = 10
         return textField
     }()
@@ -37,9 +38,40 @@ class Screen: UIView {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.keyboardType = .default
+        textField.backgroundColor = .white
         textField.layer.cornerRadius = 10
         return textField
     }()
+    
+    lazy var addButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        button.setTitle("Add", for: .normal)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func tappedAddButton() {
+        
+    }
+    
+    lazy var removeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        button.setTitle("Remove", for: .normal)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(tappedRemoveButton), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func tappedRemoveButton() {
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +83,8 @@ class Screen: UIView {
         addSubview(tableView)
         addSubview(nameTextField)
         addSubview(ageTextField)
+        addSubview(addButton)
+        addSubview(removeButton)
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +108,14 @@ class Screen: UIView {
             ageTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             ageTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             ageTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            addButton.centerXAnchor.constraint(equalTo: centerXAnchor.self),
+            addButton.topAnchor.constraint(equalTo: ageTextField.bottomAnchor, constant: 10),
+            addButton.widthAnchor.constraint(equalToConstant: 80),
+            
+            removeButton.centerXAnchor.constraint(equalTo: centerXAnchor.self),
+            removeButton.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 10),
+            removeButton.widthAnchor.constraint(equalToConstant: 80),
         ])
     }
 }
