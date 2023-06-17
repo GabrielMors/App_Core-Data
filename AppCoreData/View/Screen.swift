@@ -13,7 +13,7 @@ class Screen: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.showsVerticalScrollIndicator = false
-//        tableView.register(<#T##UINib?#>, forCellReuseIdentifier: <#T##String#>)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         return tableView
     }()
     
